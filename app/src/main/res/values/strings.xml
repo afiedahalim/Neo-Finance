@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Neo Vehicle Loan</string>
+
+    <!-- Bottom Navigation -->
+    <string name="home">Home</string>
+    <string name="calculator">Calculator</string>
+    <string name="about">About</string>
+
+    <!-- About Page -->
+    <string name="about_author">Developed by NeoFinance Team</string>
+    <string name="about_author_name">Name : RAJA NUR AFIEDA BINTI RAJA ABDUL HALIM</string>
+    <string name="about_author_id">Matric Number : 2023601134</string>
+    <string name="about_author_course">Course : NETCENTRIC COMPUTING</string>
+    <string name="about_copyright">© 2025 NeoFinance. All rights reserved.</string>
+    <string name="about_version_text">Version %1$s</string>
+
+    <!-- GitHub URL -->
+    <string name="github_url">https://github.com/afiedahalim/VehicleLoanCalculator.git</string>
+
+    <string name="about_contact_email">support@neofinance.com</string>
+</resources>

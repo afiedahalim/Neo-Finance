@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/company_bg">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="20dp"
+        android:gravity="center_horizontal"
+        android:fontFamily="@font/poppins_regular">
+
+        <ImageView
+            android:id="@+id/company_logo"
+            android:layout_width="140dp"
+            android:layout_height="140dp"
+            android:src="@drawable/company_logo"
+            android:background="@drawable/company_logo_rounded"
+            android:scaleType="centerCrop"
+            android:clipToOutline="true"/>
+
+        <TextView
+            android:id="@+id/about_author"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:textColor="@color/brand_red"
+            android:textStyle="bold"
+            android:textSize="16sp"/>
+
+        <TextView
+            android:id="@+id/about_author_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:textStyle="bold"
+            android:textColor="@color/bg_black" />
+
+        <TextView
+            android:id="@+id/about_author_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:textStyle="bold"
+            android:textColor="@color/bg_black" />
+
+        <TextView
+            android:id="@+id/about_author_course"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:textStyle="bold"
+            android:textColor="@color/bg_black" />
+
+        <TextView
+            android:id="@+id/about_copyright"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:textColor="@color/bg_black"/>
+
+        <TextView
+            android:id="@+id/about_version"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:textColor="@color/bg_black"/>
+
+        <TextView
+            android:id="@+id/about_github"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:textColor="@color/brand_red"/>
+
+        <TextView
+            android:id="@+id/about_contact"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:textColor="@color/bg_black"/>
+    </LinearLayout>
+</ScrollView>

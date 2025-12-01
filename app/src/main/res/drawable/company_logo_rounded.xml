@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android" android:shape="rectangle">
+    <!-- Transparent background that carries the bitmap centered -->
+    <size android:width="140dp" android:height="140dp" />
+    <corners android:radius="20dp"/>
+    <solid android:color="@android:color/transparent" />
+    <bitmap android:src="@drawable/company_logo" android:gravity="center"/>
+</shape>
