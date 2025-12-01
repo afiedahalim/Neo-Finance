@@ -1,0 +1,25 @@
+# Force GitHub to classify this project as Java
+*.java linguist-detectable=true
+*.kt linguist-detectable=true
+
+# Ignore Android resource XML files (GitHub suka salah kira sebagai HTML)
+*.xml linguist-detectable=false
+
+# Ignore Gradle scripts (tak perlu dikira sebagai code)
+*.gradle linguist-detectable=false
+*.gradle.kts linguist-detectable=false
+
+# Ignore manifest and miscellaneous config files
+AndroidManifest.xml linguist-detectable=false
+
+# Ignore JSON, YAML, and other config formats
+*.json linguist-detectable=false
+*.yml linguist-detectable=false
+*.yaml linguist-detectable=false
+
+# Ignore drawables, assets & misc
+*.png linguist-detectable=false
+*.jpg linguist-detectable=false
+*.jpeg linguist-detectable=false
+*.svg linguist-detectable=false
+*.webp linguist-detectable=false
