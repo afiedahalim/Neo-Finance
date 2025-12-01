@@ -29,7 +29,7 @@
     <string name="about_version_text">Version %1$s</string>
     <string name="app_name">Neo Vehicle Loan</string>
     <string name="calculator">Calculator</string>
-    <string name="github_url">https://github.com/afiedahalim/VehicleLoanCalculator.git</string>
+    <string name="github_url">https://github.com/afiedahalim/NeoFinance</string>
     <string name="home">Home</string>
     <style name="NeoButton" parent="Widget.Material3.Button">
         <item name="backgroundTint">@color/brand_red</item>

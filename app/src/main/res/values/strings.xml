@@ -16,7 +16,7 @@
     <string name="about_version_text">Version %1$s</string>
 
     <!-- GitHub URL -->
-    <string name="github_url">https://github.com/afiedahalim/VehicleLoanCalculator.git</string>
+    <string name="github_url">https://github.com/afiedahalim/NeoFinance</string>
 
     <string name="about_contact_email">support@neofinance.com</string>
 </resources>

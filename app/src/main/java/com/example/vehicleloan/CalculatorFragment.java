@@ -6,20 +6,18 @@ import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.Animation;
 import android.view.animation.CycleInterpolator;
 import android.view.animation.TranslateAnimation;
-import android.view.animation.AnimationUtils;
+import android.widget.Toast;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
+import com.google.android.material.textfield.TextInputEditText;
 
 public class CalculatorFragment extends Fragment {
 
@@ -34,10 +32,6 @@ public class CalculatorFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
 
         View root = inflater.inflate(R.layout.fragment_calculator, container, false);
-
-        // fragment enter animation
-        Animation fadeIn = AnimationUtils.loadAnimation(requireContext(), R.anim.fade_in);
-        root.startAnimation(fadeIn);
 
         // Bind Views
         tilPrice = root.findViewById(R.id.til_price);
@@ -54,13 +48,16 @@ public class CalculatorFragment extends Fragment {
         btnReset = root.findViewById(R.id.btn_reset);
         outputResult = root.findViewById(R.id.output_result);
 
-        // Info icon tooltips
+        // Info tooltips
         tilPrice.setEndIconOnClickListener(v ->
                 Toast.makeText(getContext(), "Enter total vehicle price before down payment", Toast.LENGTH_LONG).show());
+
         tilDown.setEndIconOnClickListener(v ->
                 Toast.makeText(getContext(), "Enter the initial down payment", Toast.LENGTH_LONG).show());
+
         tilRate.setEndIconOnClickListener(v ->
                 Toast.makeText(getContext(), "Enter the annual interest rate (%)", Toast.LENGTH_LONG).show());
+
         tilYears.setEndIconOnClickListener(v ->
                 Toast.makeText(getContext(), "Enter loan period in years", Toast.LENGTH_LONG).show());
 
@@ -99,18 +96,19 @@ public class CalculatorFragment extends Fragment {
         try {
             Double.parseDouble(str);
             return true;
-        } catch (NumberFormatException e) {
+        } catch (Exception e) {
             return false;
         }
     }
 
+    // ===== SIMPLE INTEREST CALCULATION (As required by assignment) =====
     private void calculateLoan() {
-        // Clear previous errors
+
+        outputResult.setText("");
         tilPrice.setError(null);
         tilDown.setError(null);
         tilRate.setError(null);
         tilYears.setError(null);
-        outputResult.setText("");
 
         String priceStr = inputPrice.getText().toString().trim();
         String downStr = inputDown.getText().toString().trim();
@@ -125,31 +123,27 @@ public class CalculatorFragment extends Fragment {
         try {
             double price = Double.parseDouble(priceStr);
             double down = Double.parseDouble(downStr);
-            double rate = Double.parseDouble(rateStr) / 100.0;
+            double rate = Double.parseDouble(rateStr);
             int years = Integer.parseInt(yearsStr);
 
             if (down > price) {
                 tilDown.setError("Down payment cannot exceed vehicle price");
                 shakeView(inputDown);
-                Toast.makeText(getContext(), "Down payment cannot exceed vehicle price", Toast.LENGTH_SHORT).show();
                 return;
             }
 
+            // == SIMPLE INTEREST FORMULAS ==
             double loanAmount = price - down;
-            double monthlyRate = rate / 12.0;
-            int months = years * 12;
+            double totalInterest = loanAmount * (rate / 100.0) * years;
+            double totalPayment = loanAmount + totalInterest;
+            double monthlyPayment = totalPayment / (years * 12);
 
-            double monthlyPayment = (loanAmount * monthlyRate) /
-                    (1 - Math.pow(1 + monthlyRate, -months));
-
-            double totalPayment = monthlyPayment * months;
-            double totalInterest = totalPayment - loanAmount;
-
+            // Display result
             outputResult.setText(String.format(
-                    "Monthly Payment : RM %.2f\nTotal Interest : RM %.2f\nTotal Cost : RM %.2f",
-                    monthlyPayment, totalInterest, totalPayment));
+                    "Loan Amount : RM %.2f\nTotal Interest : RM %.2f\nTotal Payment : RM %.2f\nMonthly Payment : RM %.2f",
+                    loanAmount, totalInterest, totalPayment, monthlyPayment));
 
-        } catch (NumberFormatException e) {
+        } catch (Exception e) {
             Toast.makeText(getContext(), "Please enter valid numbers", Toast.LENGTH_SHORT).show();
         }
     }
@@ -167,7 +161,7 @@ public class CalculatorFragment extends Fragment {
     }
 
     private void shakeView(View view) {
-        Animation shake = new TranslateAnimation(0, 10, 0, 0);
+        TranslateAnimation shake = new TranslateAnimation(0, 10, 0, 0);
         shake.setDuration(300);
         shake.setInterpolator(new CycleInterpolator(3));
         view.startAnimation(shake);
